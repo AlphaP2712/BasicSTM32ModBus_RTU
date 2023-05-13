@@ -311,7 +311,7 @@ void modbusRead1Register() // function 03
 
 void ModbusErrorReply(uint8_t Errorcode)
 {
-	hModbus->Txframe[0] = Modbus_function_Read_Holding_Register | 0x80;
+	hModbus->Txframe[0] = hModbus->Rxframe[0] | 0x80;
 	hModbus->Txframe[1] = Errorcode;
 	hModbus->TxCount = 2;
 }
